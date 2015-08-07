@@ -64,9 +64,10 @@
            aria-hidden="true"></a>
 
         <a id="form" class="anchor" href="#form" aria-hidden="true"></a>
-        <iframe src="https://docs.google.com/forms/d/1ZiCcSIpSGTd_84Wmyt9byS32N903WyDKzdKE4OZtp5A/viewform?embedded=true"
-                width="760" height="500" frameborder="0" marginheight="0"
-                marginwidth="0">Loading...</iframe>
+        <iframe src="javascript:false;" id="submission-form" width="760"
+                height="500" frameborder="0" marginheight="0" marginwidth="0">
+            Loading...
+        </iframe>
       </section>
     </div>
 
@@ -92,6 +93,64 @@
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-64711002-1', 'auto');ga('send', 'pageview');
+    </script>
+
+    <script>
+        var formID = '1ZiCcSIpSGTd_84Wmyt9byS32N903WyDKzdKE4OZtp5A/viewform',
+            base   = 'https://docs.google.com/forms/d/' + formID,
+            re     = /(?:\?|&)suggested\-talk=([a-z\-]+)/,
+            qs     = [],
+            suggestedTalks = {
+                'accessibility-in-vim': {
+                    'entry.1968623234': null,
+                    'entry.1473633891': 'Accessibility in Vim',
+                    'entry.1095904373': null,
+                    'entry.1840614147':
+                        'This is my take on the following talk requested ' +
+                        'by Stephen Belcher:\n\nAccessibility is an ' +
+                        'important issue in designing systems to maximize ' +
+                        'use for everyone, but the tools we use to design ' +
+                        'those systems are sometimes overlooked. I\'m ' +
+                        'curious whether there has been work done to ensure '+
+                        'or enable Vim to be used in an accessible way, and '+
+                        'how this would work in various accessibility ' +
+                        'scenarios.',
+                    'entry.1952428072': null,
+                    'entry.1969232063': null
+                },
+                'emacs-for-the-vim-user': {
+                    'entry.1968623234': null,
+                    'entry.1473633891': 'Emacs for the Vim User',
+                    'entry.1095904373': null,
+                    'entry.1840614147':
+                        'This is my take on the following talk requested ' +
+                        'by Stephen Belcher:\n\nEmacs is pretty similar to ' +
+                        'Vim in a lot of important ways, and is often seen ' +
+                        'as a competitor. A few plugins, such as Vim-Slime, '+
+                        'attempt to mimic functionality therein. But, I\'ve '+
+                        'never known much beyond that and I\'d like to! If ' +
+                        'there\'s someone out there who knows enough about ' +
+                        'Emacs and Vim who can share how to get the most ' +
+                        'out of both, I\'d love to hear it.',
+                    'entry.1952428072': null,
+                    'entry.1969232063': null
+                }
+            },
+            params, key, url
+
+        if (m = re.exec(location.search)) params = suggestedTalks[m[1]]
+        if (!params) params = {}
+        params.embedded = 'true'
+
+        for (key in params) {
+            if (!params[key]) qs.push(key)
+            else qs.push(
+                encodeURIComponent(key) + '=' +
+                encodeURIComponent(params[key]).replace(/%20/g, '+')
+            )
+        }
+
+        document.getElementById('submission-form').src = base + '?' + qs.join('&')
     </script>
   </body>
 </html>
