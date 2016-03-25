@@ -4,6 +4,13 @@ Home Page for Baltimore Vim
 This is the code that runs the site for the Baltimore Vim user group,
 available at http://baltimorevim.org/.
 
+Chat
+====
+
+There's now a Gitter Chatroom! Come on in!
+
+[![Gitter](https://badges.gitter.im/sycobuny/baltimorevim.svg)](https://gitter.im/sycobuny/baltimorevim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 Contributing
 ============
 
